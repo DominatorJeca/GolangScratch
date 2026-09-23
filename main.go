@@ -3,34 +3,13 @@ package main
 import "fmt"
 
 func main() {
-	// fmt.Println("HTTP/1.1 200 OK")
-	// fmt.Println("Content-Type: text/plain")
-	// fmt.Println()
-	// fmt.Println("Hello, World!")
+	people := 4
+	mealPrice := 18.75
+	subTotal := float64(people) * mealPrice
+	tax := subTotal * 0.10
+	total := subTotal + tax
 
-	content := "Hello from the other side"
-
-	// 	requestMessage := "HTTP/1.1 200 OK"
-
-	// 	formatMessage := `HTTP/1.1 200 OK
-	// Content-Type: text/plain
-
-	// ` + content
-
-	//fmt.Println(requestMessage)
-	//fmt.Println(formatMessage)
-	fmt.Printf(`HTTP/1.1 200 OK
-Content-Type: text/plain
-
-%s`, content)
-
-	response := fmt.Sprintf(`HTTP/1.1 200 OK
-Content-Type: text/plain
-
-%s`, content)
-
-	fmt.Println(response)
-	fmt.Println(getStatus(5000))
+	fmt.Printf("Final bill: $%.2f\n", total)
 
 }
 
