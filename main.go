@@ -3,14 +3,21 @@ package main
 import "fmt"
 
 func main() {
-	people := 4
-	mealPrice := 18.75
-	subTotal := float64(people) * mealPrice
-	tax := subTotal * 0.10
-	total := subTotal + tax
+	destination := "Lisbon"
+	travelers := 4
+	bookingConfirmed := true
 
-	fmt.Printf("Final bill: $%.2f\n", total)
+	pricePerNight := 89.90
+	nights := 3
+	total := pricePerNight * float64(nights)
+	perPerson := total / float64(travelers)
+	fmt.Printf("Trip to %s for %d friends. Booked: %t\n", destination, travelers, bookingConfirmed)
+	fmt.Printf("Total: $%.2f, each pays $%.2f\n", total, perPerson)
 
+	budget := 70.00
+	withinBudget := perPerson <= budget
+
+	fmt.Printf("Within budget: %v\n", withinBudget)
 }
 
 // Challenge: Consider the following function that receives
