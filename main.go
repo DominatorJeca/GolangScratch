@@ -3,34 +3,29 @@ package main
 import "fmt"
 
 func main() {
-	destination := "Lisbon"
-	travelers := 4
-	bookingConfirmed := true
+	requests := []string{
+		"GET /coffees HTTP/1.1", // 0
+		"GET /beans HTTP/1.1",   // 1
+		"GET /tea HTTP/1.1",     // 2
+	}
 
-	pricePerNight := 89.90
-	nights := 3
-	total := pricePerNight * float64(nights)
-	perPerson := total / float64(travelers)
-	fmt.Printf("Trip to %s for %d friends. Booked: %t\n", destination, travelers, bookingConfirmed)
-	fmt.Printf("Total: $%.2f, each pays $%.2f\n", total, perPerson)
+	//fmt.Println(requests[0])
 
-	budget := 70.00
-	withinBudget := perPerson <= budget
+	requests = append(requests, "Hey this is a new element") // 3
 
-	fmt.Printf("Within budget: %v\n", withinBudget)
+	requests[len(requests)-1] = "POST /coffees HTTP/1.1"
+
+	// List them
+	// Loop over the requests to read their content
+	for index, value := range requests {
+		fmt.Printf("Index: %v, Value: %v\n", index, value)
+
+		// Decide what to do with them...
+		handle(index, value)
+	}
+
 }
 
-// Challenge: Consider the following function that receives
-// a code number as arguments and returns a string with an
-// HTTP reason, ex: 200 -> OK, 404 -> NOT FOUND
-// If the code is not found returns: "Code {code} does not exist"
-func getStatus(code int) string {
-	if code == 200 {
-		return "OK"
-	}
-	if code == 404 {
-		return "NOT FOUND"
-	}
+func handle(index int, value string) {
 
-	return fmt.Sprintf("Code %d does not exist", code)
 }
